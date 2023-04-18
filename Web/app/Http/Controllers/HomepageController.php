@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpClient\HttpClient;
+use Termwind\Components\Dd;
 
 class HomepageController extends Controller
 {
