@@ -61,6 +61,7 @@ class Main:
         tokenizer = DataReader.get_tokenizer(path_tokenizer)
         ulasan_sequence = Modeling.get_seq(ulasan_preproc,tokenizer) 
         sentiment_ouput = Modeling.predict_sentiment(model, ulasan_sequence)
+        print(ulasan)
         print(sentiment_ouput)
         print(ulasan_preproc)
 
