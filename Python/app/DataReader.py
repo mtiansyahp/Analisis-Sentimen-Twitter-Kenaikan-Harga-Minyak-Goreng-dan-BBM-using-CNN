@@ -1,4 +1,5 @@
 import pandas as pd
+import pickle 
 
 # 
 class DataReader:
@@ -28,6 +29,12 @@ class DataReader:
         result = ' '.join(word)
 
         return result
+    
+    def get_tokenizer(path):
+        with open(path, 'rb') as handle:
+            tokenizer = pickle.load(handle)
+
+        return tokenizer
 
     def load_stopword_list(path):
         stopword_file = open(path, "r")

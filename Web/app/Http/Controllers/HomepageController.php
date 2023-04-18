@@ -16,34 +16,34 @@ class HomepageController extends Controller
 
     }
     // store logic
-    public function storeCsv(Request $request ){
-        $validation = Validator::make(
-            $request->all(),
-            [
-                // 'file-upload' => 'required|mimes:csv,txt|max:2048',
-                'review' => 'required|string',
-                // 'notelp' => 'required',
+    // public function storeCsv(Request $request ){
+    //     $validation = Validator::make(
+    //         $request->all(),
+    //         [
+    //             // 'file-upload' => 'required|mimes:csv,txt|max:2048',
+    //             'review' => 'required|string',
+    //             // 'notelp' => 'required',
 
-            ],
-            [
-                // 'file-upload.required' => 'Inputan File Harus Diisi',
-                'review.required' => 'Inputan Review Harus Diisi',
-                // 'notelp.required' => 'Inputan File Harus Diisi',
-            ]
-        );
-        if ($validation->fails()) {
-            return redirect()->back()->withErrors($validation->errors())->withInput();
-        }
-        $datacsv = new DataCSV();
-        // $datacsv->data_csv = $request->file('file-upload')->store('csv', 'public');
-        $datacsv->review = $request-> review ;
-        // $datacsv->no_telp = $request-> notelp ;
+    //         ],
+    //         [
+    //             // 'file-upload.required' => 'Inputan File Harus Diisi',
+    //             'review.required' => 'Inputan Review Harus Diisi',
+    //             // 'notelp.required' => 'Inputan File Harus Diisi',
+    //         ]
+    //     );
+    //     if ($validation->fails()) {
+    //         return redirect()->back()->withErrors($validation->errors())->withInput();
+    //     }
+    //     $datacsv = new DataCSV();
+    //     // $datacsv->data_csv = $request->file('file-upload')->store('csv', 'public');
+    //     $datacsv->review = $request-> review ;
+    //     // $datacsv->no_telp = $request-> notelp ;
 
-        if($datacsv->save()){
+    //     if($datacsv->save()){
 
-            return redirect()->back()->with('success', 'Selamat Inputan Anda Berhasil Diisi!');
-        }
-    }
+    //         return redirect()->back()->with('success', 'Selamat Inputan Anda Berhasil Diisi!');
+    //     }
+    // }
 
     public function getData(Request $request ){
             // $gd= DataCSV::get()->all();
@@ -51,7 +51,7 @@ class HomepageController extends Controller
             // how to make end point to API with port flask
 
             // nadia code
-            $apiUrl ='http://127.0.0.1:5000/coba';
+            $apiUrl ='http://127.0.0.1:5000/home';
             $postData = [
                 'review' => $request->review,
                 // 'preproc' => $request->radioPreproc,

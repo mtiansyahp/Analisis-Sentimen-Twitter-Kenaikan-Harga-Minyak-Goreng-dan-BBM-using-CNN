@@ -88,7 +88,7 @@
 
                 <!-- Replace with your content -->
                 <div class="px-4 py-6 sm:px-0">
-                    <form action="{{ route('postcsv') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('beranda_post') }}" method="POST" enctype="multipart/form-data">
                         <div class="max-h-96 rounded-lg border-4 border-dashed border-gray-200">
                             @csrf
                             <div class="form-1">

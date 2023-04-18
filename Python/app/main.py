@@ -12,55 +12,49 @@ from flask_restful import reqparse, Api, Resource
 
 from DataReader import DataReader
 from Preprocessing import Preprocessing
+from Modeling import Modeling
 
-from gensim.models import word2vec
-from nltk.stem import WordNetLemmatizer
-from nltk.corpus import stopwords
-from nltk.tokenize import RegexpTokenizer
-from more_itertools import take #to take particular items from dict
-from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory, StopWordRemover, ArrayDictionary
-from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
-from sklearn.model_selection import train_test_split
-from imblearn.over_sampling import SMOTE
-from collections import Counter #to count occurences 
+from keras.models import load_model
 
-from keras_preprocessing.sequence import pad_sequences  #for padding our text
-from keras.preprocessing.text import Tokenizer #for word tokenization
-from keras.models import Sequential
-from keras.layers import Dense, Dropout, Activation, Embedding, Conv1D, GlobalMaxPooling1D
+
 # 
 
+class Main:
+    app = Flask(__name__)
+    CORS(app)
 
-path_data = "../asset/datacleanedstemming.csv"
-path_stopword_list = "../asset/idn_stopwords.txt"
+    global path_model, path_data, path_stopword_list, path_tokenizer
+    
+    path_model = "../asset/cnn-best.h5"
+    path_data = "../asset/datacleanedstemming.csv"
+    path_stopword_list = "../asset/idn_stopwords.txt"
+    path_tokenizer = "../asset/tokenizer.pickle"
 
-dataexample = "dasar pemerintah goblok banget dech buat kebijakan aja ga becus!!😘 "
-#Preprocessing Phase ->>
+    dataexample = "dasar pemerintah goblok banget dech buat kebijakan aja ga becus!!😘 "
+    #Preprocessing Phase ->>
 
-data = Preprocessing.clean_tweet(dataexample)
-
-
-
-# load = DataReader.load_stopword_list(path_stopword_list)
-print(data)
-
-
-
-
+    # data = Preprocessing.clean_tweet(dataexample)
 
 
 
-app = FastAPI()
+    # load = DataReader.load_stopword_list(path_stopword_list)
+    # print(data)
+    # 
+    
 
-@app.get("/")
-def read_root():
-    return {"Hello": "World"}
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
 
+    @app.route('/home', methods=["GET","POST"])
+    def predictSentiment():
+
+        ulasan = request.form.get("review")
+        print(ulasan)
+        model = load_model(path_model, custom_objects={"f1": Modeling.f1, "precision": Modeling.precision, "recall": Modeling.recall})
+        tokenizer = DataReader.get_tokenizer(path_tokenizer)
+        ulasan_sequence = Modeling.get_seq(ulasan,tokenizer) 
+        sentiment_ouput = Modeling.predict_sentiment(model, ulasan_sequence)
+        print(sentiment_ouput)
+    
+    if __name__ == '__main__':
+        app.run(debug=True)
