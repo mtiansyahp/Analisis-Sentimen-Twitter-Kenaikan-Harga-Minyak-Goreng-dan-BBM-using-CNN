@@ -45,6 +45,14 @@ class DataReader:
 
         return final_stopword_list
 
+    def get_slang_dictionary(path):
+        slang_dictionary = {} #intialize new dict for our new dictionary
+        slang_document = pd.read_csv(path) #read original slang csv file
+        for i, row in slang_document.iterrows():
+            slang_dictionary[row["slang"]] = row["formal"] #take needed columns only, slang and formal columns
+
+        return slang_dictionary
+
     
 
 

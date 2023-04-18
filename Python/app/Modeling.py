@@ -168,7 +168,7 @@ class Modeling:
             label = "negatif"
         else:
             label = "positif"
-        result = "Ulasan produk bersentimen {} dengan nilai polaritas sebesar {}".format(label, sentiment_seq)
+        result = "Opini Tweet bersentimen {} dengan nilai polaritas sebesar {}".format(label, sentiment_seq)
 
         return result
     
