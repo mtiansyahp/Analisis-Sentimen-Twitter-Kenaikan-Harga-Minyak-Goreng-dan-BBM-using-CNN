@@ -66,6 +66,7 @@ class Main:
         print(ulasan_preproc)
 
         # return sentiment_ouput
+        
 
 
     if __name__ == '__main__':
