@@ -70,9 +70,10 @@ class HomepageController extends Controller
                 'body' => $formData,
             ]);
             // Get the response content
-            $content = json_decode($response->getContent());
+            // $content = json_decode($response->getContent());
+            $content = $response->getContent()  ;
             $title = "Demo";
-            // dd($formData);
+            dd($content);
             return view('beranda')->with(compact('content', 'title'));
             // return view('pages.demo', compact('contentJSON', 'title'));
             // return view('beranda',compact('gd'));
