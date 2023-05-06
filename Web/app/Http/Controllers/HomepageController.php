@@ -53,8 +53,10 @@ class HomepageController extends Controller
 
             // nadia code
             $apiUrl ='http://127.0.0.1:5000/home';
+
             $postData = [
-                'ulasan' => $request->review,
+                // 'ulasan' => $request->review,
+                'ulasan' => $request->has('review') ? $request->review : null,
                 'preproc' => $request->radioPreproc,
                 'result' => $request->review,
                 // 'model' => $request->radioModel,
@@ -72,9 +74,9 @@ class HomepageController extends Controller
             ]);
             // Get the response content
             // $content = json_decode($response->getContent());
-            $content = $response->getContent()  ;
+            $content = json_decode($response->getContent()) ;
             $title = "Demo";
-            dd($content);
+            // dd($content);
             return view('beranda')->with(compact('content', 'title'));
             // return view('pages.demo', compact('contentJSON', 'title'));
             // return view('beranda',compact('gd'));

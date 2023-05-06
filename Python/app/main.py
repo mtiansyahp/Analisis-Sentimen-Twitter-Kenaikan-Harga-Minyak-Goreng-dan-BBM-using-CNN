@@ -52,6 +52,7 @@ class Main:
         load_slang_words = DataReader.get_slang_dictionary(path_slang_words)
         stopword_list = DataReader.load_stopword_list(path_stopword_list)
         ulasan = request.form.get("ulasan")
+        ulasan_temp = ulasan
         # comparison between before and after
         ulasan_preproc = Preprocessing.stemming(Preprocessing.stopword_removal(Preprocessing.normalize_words(Preprocessing.clean_tweet(ulasan),load_slang_words),stopword_list))        
         # opsi should use preprocessing or nope coz in some case its not really always best idea to use it
@@ -66,7 +67,7 @@ class Main:
         print(sentiment_ouput)
 
         return {
-            'ulasanbefore' : ulasan,
+            'ulasan' : ulasan_temp,
             'preproc' : ulasan_preproc,
             'result'  : sentiment_ouput
         }

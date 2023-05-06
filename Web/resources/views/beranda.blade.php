@@ -89,7 +89,7 @@
                 <!-- Replace with your content -->
                 <div class="px-4 py-6 sm:px-0">
                     <form action="{{ route('beranda_post') }}" method="POST" enctype="multipart/form-data">
-                        <div class="max-h-96 rounded-lg border-4 border-dashed border-gray-200">
+                        <div class="max-h-96 rounded-lg border-4 border-dashed border-gray-200 pb-48">
                             @csrf
                             <div class="form-1">
                                 <div class="mx-3 my-3 md:grid md:grid-cols-3 md:gap-6">
@@ -113,8 +113,31 @@
                                                                 class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                                                 placeholder="Masukan Contoh Review">
                                                         </div>
+                                                        <div class="result">
+                                                            <label for="review"
+                                                                class="block text-sm font-medium leading-6 text-gray-900">Inputan
+                                                                Awal Ulasan
+                                                            </label>
+                                                            <input type="text" name="review" id="review"
+                                                                class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                                placeholder="" value="{{$content->ulasan ?? ''}} " disabled>
+                                                            <label for="review"
+                                                                class="block text-sm font-medium leading-6 text-gray-900">Hasil
+                                                                Pre Processing</label>
+                                                            <input type="text" name="review" id="review"
+                                                                class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                                placeholder="" value="{{$content->preproc }}" disabled>
+                                                            {{-- {{ $content->preproc }} --}}
+                                                            <label for="result-model"
+                                                                class="block text-sm font-medium leading-6 text-gray-900">Hasil
+                                                                Modelling</label>
+                                                            <input type="text" name="review" id="review"
+                                                                class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                                                placeholder="" value="{{$content->result }}" disabled>
+                                                            {{-- {{ $content->preproc }} --}}
+                                                        </div>
                                                     </div>
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>
@@ -210,8 +233,11 @@
                             <button type="submit"
                                 class="w-full inline-flex justify-center rounded-md border border-transparent bg-gray-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Proses</button>
                         </div>
+
+
                     </form>
                 </div>
+
             </div>
         </main>
     </div>
