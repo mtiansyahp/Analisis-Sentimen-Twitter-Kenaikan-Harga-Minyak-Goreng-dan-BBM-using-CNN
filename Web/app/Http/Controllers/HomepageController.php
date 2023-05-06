@@ -55,7 +55,8 @@ class HomepageController extends Controller
             $apiUrl ='http://127.0.0.1:5000/home';
             $postData = [
                 'ulasan' => $request->review,
-                // 'preproc' => $request->radioPreproc,
+                'preproc' => $request->radioPreproc,
+                'result' => $request->review,
                 // 'model' => $request->radioModel,
             ];
             $formData = http_build_query($postData);
