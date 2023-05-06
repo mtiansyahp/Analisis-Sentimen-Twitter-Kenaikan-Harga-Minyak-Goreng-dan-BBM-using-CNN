@@ -17,4 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomepageController::class, 'index'])->name('beranda');
 // Route::get('/home', [HomepageController::class, 'getData'])->name('index');
 Route::post('/home', [HomepageController::class, 'getData'])->name('beranda_post');
-Route::post('/', [HomepageController::class, 'storeCsv'])->name('postcsv');
+// Route::post('/', [HomepageController::class, 'storeCsv'])->name('postcsv');
