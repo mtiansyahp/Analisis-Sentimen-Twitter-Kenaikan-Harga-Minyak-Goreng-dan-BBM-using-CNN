@@ -49,28 +49,28 @@ class Main:
     @app.route('/home', methods=["GET","POST"])
     def predictSentiment():
 
-        load_slang_words = DataReader.get_slang_dictionary(path_slang_words)
+        slang_words = DataReader.get_slang_dictionary(path_slang_words)
         stopword_list = DataReader.load_stopword_list(path_stopword_list)
-        ulasan = request.form.get("ulasan")
-        ulasan_temp = ulasan
+        tweet = request.form.get("tweet")
+        tweet_temp = tweet
         # comparison between before and after
-        ulasan_preproc = Preprocessing.stemming(Preprocessing.stopword_removal(Preprocessing.normalize_words(Preprocessing.clean_tweet(ulasan),load_slang_words),stopword_list))        
+        tweet_preproc = Preprocessing.stemming(Preprocessing.stopword_removal(Preprocessing.normalize_words(Preprocessing.clean_tweet(tweet),slang_words),stopword_list))        
         # opsi should use preprocessing or nope coz in some case its not really always best idea to use it
-        print(ulasan_preproc , "ulasan")
+        print(tweet_preproc , "tweet")
         # print(ulasan)
         model = load_model(path_model, custom_objects={"f1": Modeling.f1, "precision": Modeling.precision, "recall": Modeling.recall})
         tokenizer = DataReader.get_tokenizer(path_tokenizer)
-        ulasan_sequence = Modeling.get_seq(ulasan_preproc,tokenizer) 
-        sentiment_ouput = Modeling.predict_sentiment(model, ulasan_sequence)
-        print(ulasan)
-        print(ulasan_preproc)
+        tweet_sequence = Modeling.get_seq(tweet_preproc,tokenizer) 
+        sentiment_ouput = Modeling.predict_sentiment(model, tweet_sequence)
+        print(tweet)
+        print(tweet_preproc)
         print(sentiment_ouput)
 
         return {
-            'ulasan' : ulasan_temp,
-            'preproc' : ulasan_preproc,
+            'tweet' : tweet_temp,
+            'preproc' : tweet_preproc,
             'result'  : sentiment_ouput
         }
-
+    
     if __name__ == '__main__':
         app.run(debug=True)

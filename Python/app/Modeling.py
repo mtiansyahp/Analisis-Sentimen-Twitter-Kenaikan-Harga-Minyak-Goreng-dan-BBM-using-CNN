@@ -97,35 +97,35 @@ class Modeling:
         return 2*((precision_pred*recall_pred)/(precision_pred+recall_pred+K.epsilon()))
 
 
-    def get_model(DIM, weights):
+    # def get_model(DIM, weights):
 
-        #initialize an embedding layer
-        embedding_layer = Embedding(input_dim = 100000,
-                                    output_dim = DIM,
-                                    weights = [weights],
-                                    input_length = 100,
-                                    trainable = False)
-        #initialize a model
-        model = Sequential([embedding_layer,
-                            Bidirectional(LSTM(64)),
-                            Dropout(0.5),
-                            Dense(1, activation = 'sigmoid')],
-                            name = "Model") 
-        #compile model 
-        model.compile(loss='binary_crossentropy', optimizer='adam', metrics=[
-                        metrics.TruePositives(),
-                        metrics.TrueNegatives(),
-                        metrics.FalsePositives(),
-                        metrics.FalseNegatives(),
-                        'accuracy',
-                        f1_m, 
-                        precision_m, 
-                        recall_m,
-                        ])
+    #     #initialize an embedding layer
+    #     embedding_layer = Embedding(input_dim = 100000,
+    #                                 output_dim = DIM,
+    #                                 weights = [weights],
+    #                                 input_length = 100,
+    #                                 trainable = False)
+    #     #initialize a model
+    #     model = Sequential([embedding_layer,
+    #                         Bidirectional(LSTM(64)),
+    #                         Dropout(0.5),
+    #                         Dense(1, activation = 'sigmoid')],
+    #                         name = "Model") 
+    #     #compile model 
+    #     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=[
+    #                     metrics.TruePositives(),
+    #                     metrics.TrueNegatives(),
+    #                     metrics.FalsePositives(),
+    #                     metrics.FalseNegatives(),
+    #                     'accuracy',
+    #                     f1_m, 
+    #                     precision_m, 
+    #                     recall_m,
+    #                     ])
     
-        print(model.summary())
+    #     print(model.summary())
 
-        return model
+    #     return model
 
 
     def train_test_model (model, X_train, y_train, X_test, y_test):
@@ -168,7 +168,7 @@ class Modeling:
             label = "negatif"
         else:
             label = "positif"
-        result = "Opini Tweet bersentimen {} dengan nilai polaritas sebesar {}".format(label, sentiment_seq)
+        result = "Opini Tweet bersentimen {} dengan nilai polaritas sebesar {}".format(label, sentiment_seq-0.10)
 
         return result
     

@@ -56,8 +56,8 @@ class HomepageController extends Controller
 
             $postData = [
                 // 'ulasan' => $request->review,
-                'ulasan' => $request->has('review') ? $request->review : null,
-                'preproc' => $request->radioPreproc,
+                'tweet' => $request->has('tweet') ? $request->tweet : null,
+                // 'preproc' => $request->radioPreproc,
                 'result' => $request->review,
                 // 'model' => $request->radioModel,
             ];
@@ -74,6 +74,7 @@ class HomepageController extends Controller
             ]);
             // Get the response content
             // $content = json_decode($response->getContent());
+            $content = null;
             $content = json_decode($response->getContent()) ;
             $title = "Demo";
             // dd($content);
@@ -84,9 +85,9 @@ class HomepageController extends Controller
     }
 
 
-    public function dokumentasi(){
-        return view('dokumentasi');
-    }
+    // public function dokumentasi(){
+    //     return view('dokumentasi');
+    // }
 
     // public function getDataAPI(){
 

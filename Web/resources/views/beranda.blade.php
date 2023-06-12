@@ -29,8 +29,9 @@
                                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                                 <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
                                     aria-current="page">Beranda</a>
-                                <a href="#"
+                                {{-- <a href="#"
                                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Dokumentasi</a>
+                                --}}
                             </div>
                         </div>
                     </div>
@@ -40,12 +41,16 @@
 
         <header class="bg-white shadow">
             <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold tracking-tight text-gray-900">Beranda</h1>
-                <h2 class="text-sm font-text-regular tracking-tight my-2">Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Tempore ad eaque quaerat aliquam exercitationem, iure quae doloremque sapiente
-                    amet adipisci sit, cupiditate dolor, iusto soluta laborum dicta modi quas delectus ratione
-                    repellendus est repellat! Quam debitis cumque illum quidem pariatur, vitae aliquid deserunt modi
-                    quod expedita iure ipsa hic odit.</h2>
+                <h1 class="text-3xl font-bold tracking-tight text-gray-900">Sistem Analisis Sentimen Twitter</h1>
+                <h2 class="text-sm font-text-regular tracking-tight my-2">Pesatnya perkembangan media sosial membuat
+                    pengguna lebih mudah membagikan pendapat pada platform online seperti forum web, blog, dan situs
+                    media sosial Twitter maupun Facebook (Rani dan Kumar, 2018; Zhao et al., 2019). Berdasarkan data
+                    dari Asosiasi Penyelenggara Jasa Internet Indonesia (APJII), pertumbuhan pemakai internet tahun 2022
+                    (Q1), pengguna internet di Indonesia mencapai 220 juta dari total keseluruhan populasi penduduk
+                    Indonesia. Sebelum pandemi, jumlah pengguna internet di Indonesia adalah 175 juta orang, sedangkan
+                    pada 2020-2021 naik di angka 210,03 juta dari 196,7 juta pada periode 2019-2020 (APJII, 2021).
+                    Mayoritas layanan internet yang paling sering digunakan antara lain seperti Facebook, Twitter,
+                    Instagram dan lainnya. (APJII, 2022). </h2>
             </div>
         </header>
         <main>
@@ -95,9 +100,10 @@
                                 <div class="mx-3 my-3 md:grid md:grid-cols-3 md:gap-6">
                                     <div class="md:col-span-1">
                                         <div class="px-4 sm:px-0">
-                                            <h3 class="text-lg font-medium leading-6 text-gray-900">Dokumentasi</h3>
-                                            <p class="mt-1 text-sm text-gray-600">This information will be displayed
-                                                publicly so be careful what you share.</p>
+                                            <h3 class="text-lg font-medium leading-6 text-gray-900">Prediksi Sentimen
+                                            </h3>
+                                            <p class="mt-1 text-sm text-gray-600">Masukan Dataset Twitter yang ingin
+                                                anda Prediksi Sentimennya</p>
                                         </div>
                                     </div>
                                     <div class="mt-5 md:col-span-2 md:mt-0">
@@ -105,35 +111,38 @@
                                             <div class="grid grid-cols-12 gap-6">
                                                 <div class="col-span-12 sm:col-span-12">
                                                     <div>
-                                                        <label for="review"
+                                                        <label for="tweet"
                                                             class="block text-sm font-medium leading-6 text-gray-900">Contoh
-                                                            Review</label>
+                                                            Tweet</label>
                                                         <div class="relative mt-2 rounded-md shadow-sm">
-                                                            <input type="text" name="review" id="review"
+                                                            <input type="text" name="tweet" id="tweet"
                                                                 class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                                placeholder="Masukan Contoh Review">
+                                                                placeholder="Masukan Contoh Review" @required(true)>
                                                         </div>
                                                         <div class="result">
-                                                            <label for="review"
+                                                            <label for="tweet"
                                                                 class="block text-sm font-medium leading-6 text-gray-900">Inputan
-                                                                Awal Ulasan
+                                                                Awal Tweet
                                                             </label>
-                                                            <input type="text" name="review" id="review"
+                                                            <input type="text" name="tweet" id="review"
                                                                 class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                                placeholder="" value="{{$content->ulasan ?? ''}} " disabled>
-                                                            <label for="review"
+                                                                placeholder="" value="{{$content->tweet ?? ''}} "
+                                                                disabled>
+                                                            <label for="tweet"
                                                                 class="block text-sm font-medium leading-6 text-gray-900">Hasil
                                                                 Pre Processing</label>
-                                                            <input type="text" name="review" id="review"
+                                                            <input type="text" name="tweet" id="review"
                                                                 class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                                placeholder="" value="{{$content->preproc }}" disabled>
+                                                                placeholder="" value="{{$content->preproc ?? '' }}"
+                                                                disabled>
                                                             {{-- {{ $content->preproc }} --}}
                                                             <label for="result-model"
                                                                 class="block text-sm font-medium leading-6 text-gray-900">Hasil
                                                                 Modelling</label>
-                                                            <input type="text" name="review" id="review"
+                                                            <input type="text" name="tweet" id="review"
                                                                 class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                                placeholder="" value="{{$content->result }}" disabled>
+                                                                placeholder="" value="{{$content->result ?? '' }}"
+                                                                disabled>
                                                             {{-- {{ $content->preproc }} --}}
                                                         </div>
                                                     </div>
