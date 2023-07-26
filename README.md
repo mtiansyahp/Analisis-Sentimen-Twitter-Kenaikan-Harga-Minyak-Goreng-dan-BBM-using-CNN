@@ -8,8 +8,17 @@ Kata Kunci : Analisis Sentimen, Convolutional Neural Network (CNN), Pra-Pengolah
 
 # RAW Dataset
 
-Link : https://github.com/mtiansyahp/codingan-thesis/blob/main/Python/asset/datacleanedstemming.csv
+Link : https://github.com/mtiansyahp/codingan-thesis/blob/main/Python/asset/datasetsaya.csv
 
 # Dataset yang sudah Di Pre-Processing
 
 Link : https://github.com/mtiansyahp/codingan-thesis/blob/main/Python/asset/datacleanedstemming.csv
+
+# Testing On :
+- Processor I5-8300H CPU 2.30Ghz 8 CPU
+- Python 3.18
+- WIN 10
+- RAM 16GB
+- NVMe SSD 512GB
+
+
