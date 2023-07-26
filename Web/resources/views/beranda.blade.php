@@ -42,15 +42,20 @@
         <header class="bg-white shadow">
             <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold tracking-tight text-gray-900">Sistem Analisis Sentimen Twitter</h1>
-                <h2 class="text-sm font-text-regular tracking-tight my-2">Pesatnya perkembangan media sosial membuat
-                    pengguna lebih mudah membagikan pendapat pada platform online seperti forum web, blog, dan situs
-                    media sosial Twitter maupun Facebook (Rani dan Kumar, 2018; Zhao et al., 2019). Berdasarkan data
-                    dari Asosiasi Penyelenggara Jasa Internet Indonesia (APJII), pertumbuhan pemakai internet tahun 2022
-                    (Q1), pengguna internet di Indonesia mencapai 220 juta dari total keseluruhan populasi penduduk
-                    Indonesia. Sebelum pandemi, jumlah pengguna internet di Indonesia adalah 175 juta orang, sedangkan
-                    pada 2020-2021 naik di angka 210,03 juta dari 196,7 juta pada periode 2019-2020 (APJII, 2021).
-                    Mayoritas layanan internet yang paling sering digunakan antara lain seperti Facebook, Twitter,
-                    Instagram dan lainnya. (APJII, 2022). </h2>
+                <br>
+                <h2 class="text-sm font-text-regular tracking-tight my-2">Laju pertumbuhan media sosial yang begitu
+                    pesat membuat masyarakat lebih mudah menyuarakan opini mereka pada platform online seperti blog,
+                    forum web, dan media sosial Instagram, Facebook, maupun Twitter. Informasi atau komentar yang
+                    tersebar dalam Twitter terdiri dari berbagai macam jenis yaitu komentar positif, negatif, dan
+                    netral. Saat ini telah banyak dilakukan penelitian di bidang Natural Language Processing (NLP)
+                    khususnya mengenai analisis sentimen. Berdasarkan hal tersebut, dibuat sebuah perangkat lunak yang
+                    dapat memprediksi analisis sentimen menggunakan metode Convolutional Neural Network (CNN). data yang
+                    digunakan adalah data tweet mengenai topik kenaikan harga minyak goreng dan BBM dalam 1 tahun
+                    terakhir sebanyak 601 dari Twitter. Data diolah menjadi 4 label yaitu berdasarkan rasio pembagian
+                    data yaitu 70:30 serta 60:40 dan tahap pre-processing atau tanpa melalui tahap pre-processing. Hasil
+                    penelitian menunjukan model yang dilatih menggunakan data dengan skema 70:30 dan melalui tahap
+                    pre-processing memiliki peforma terbaik dengan nilai akurasi 0.63055, precision 0.57934, recall
+                    0.68477 dan F1-Score 0.55286.</h2>
             </div>
         </header>
         <main>
@@ -117,7 +122,7 @@
                                                         <div class="relative mt-2 rounded-md shadow-sm">
                                                             <input type="text" name="tweet" id="tweet"
                                                                 class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                                                placeholder="Masukan Contoh Review" @required(true)>
+                                                                placeholder="Masukan Contoh Tweet" @required(true)>
                                                         </div>
                                                         <div class="result">
                                                             <label for="tweet"
