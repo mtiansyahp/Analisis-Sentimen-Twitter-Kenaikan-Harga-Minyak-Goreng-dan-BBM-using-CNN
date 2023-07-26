@@ -10,3 +10,6 @@ Kata Kunci : Analisis Sentimen, Convolutional Neural Network (CNN), Pra-Pengolah
 
 Link : https://github.com/mtiansyahp/codingan-thesis/blob/main/Python/asset/datacleanedstemming.csv
 
+# Dataset yang sudah Di Pre-Processing
+
+Link : https://github.com/mtiansyahp/codingan-thesis/blob/main/Python/asset/datacleanedstemming.csv
